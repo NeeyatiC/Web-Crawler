@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title>Crawl Results</title>
+</head>
+<body>
+    <h1>Crawled URLs from {{ base_url }}</h1>
+    <ul>
+        {% for source_url, links in website_map.items() %}
+            <li>{{ source_url }}
+                <ul>
+                    {% for target_url, tag in links %}
+                        <li>{{ target_url }} (found in {{ tag }} tag)</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+    <p>Download the CSV file: <a href="/static/{{ csv_filename }}">website_links.csv</a></p>
+</body>
+</html>
